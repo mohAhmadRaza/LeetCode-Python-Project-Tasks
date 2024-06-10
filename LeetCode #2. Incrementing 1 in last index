@@ -1,0 +1,14 @@
+given_list = []
+n = int(input())
+for i in range(n):
+given_list.append(input())
+
+string = ''.join(map(str, given_list))
+incrementing = int(string) + 1
+print(incrementing)
+incrementing = str(incrementing)
+given_list = []
+for i in incrementing:
+    given_list.append(i)
+
+print(given_list)
