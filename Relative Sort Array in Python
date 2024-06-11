@@ -1,0 +1,23 @@
+class Solution:
+    def relativeSortArray(self, arr1: List[int], arr2: List[int]) -> List[int]:
+        arr1.sort()
+        new_list = []
+        for i in arr2:
+            my_list = []
+            for j in arr1:
+                if j == i:
+                   my_list.append(i)
+            new_list.append(my_list)
+        
+        unique_list = []
+        unique_list = [x for x in new_list if x not in unique_list]
+        flat_list = [item for sublist in unique_list for item in sublist]
+        
+        remain_list = []
+        for i in arr1:
+            if i not in flat_list:
+                remain_list.append(i)
+        remain_list.sort()
+
+        flat_list.extend(remain_list)
+        return flat_list
