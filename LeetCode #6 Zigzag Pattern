@@ -1,0 +1,73 @@
+import numpy
+class Solution:
+    def convert(self, s: str, numRows: int) -> str:
+
+        if numRows == 1 or numRows >= len(s) or len(s) == 1:
+            return s
+        count = 0
+        now = numRows
+        matrix = []
+
+        one_cycle_char = 1
+        one_cycle_char = numRows+(numRows-2)
+        total_cycles = int(len(s)/one_cycle_char)
+        columns = (numRows-1)*total_cycles
+        remaining_char = int(len(s)%one_cycle_char)
+
+        for i in range(total_cycles):
+            now = numRows
+            for j in range(numRows-1):
+                listing = []
+                now = now-1
+                for k in range(numRows):
+                    if j == 0:
+                       listing.append(s[count])
+                       count = count + 1
+                    elif k == now and j != 0:
+                       listing.append(s[count])
+                       count = count + 1
+                    elif j != 0 and k != now:
+                       listing.append("")
+                matrix.append(listing)
+
+        if remaining_char < numRows or remaining_char == numRows:
+            listing = []
+            remain_columns = 1
+            for i in range(numRows):
+                if count < len(s):
+                    listing.append(s[count])
+                    count = count+1
+                else:
+                    listing.append("")
+            matrix.append(listing)
+        else:
+            remain_columns = (remaining_char % numRows)+1
+            for i in range(remain_columns):
+                now = numRows-i
+                listing = []
+                for j in range(1, numRows+1):
+                    if i == 0:        
+                        listing.append(s[count])
+                        count = count+1
+                    elif i != 0 and j == now:
+                        listing.append(s[count])
+                        count = count+1
+                    elif i != 0 and j != now:
+                        listing.append("")
+                matrix.append(listing)
+
+        string = ""
+        matrix2 = (numpy.transpose(matrix))
+        for i in matrix2:
+            string += ''.join(i)
+        return string
+
+        
+
+
+
+
+        
+
+                
+            
