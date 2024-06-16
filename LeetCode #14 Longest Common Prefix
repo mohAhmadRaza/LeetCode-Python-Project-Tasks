@@ -1,0 +1,24 @@
+class Solution:
+    def longestCommonPrefix(self, strs: List[str]) -> str:
+        if not strs:
+            return ""
+        
+        else:
+            min_length = min(len(s) for s in strs)
+            length = len(strs)
+            to = strs[0]
+            case = True
+            prefix = ""
+            for i in range(min_length):
+                count = 0
+                for j in strs[1:]:
+                    if to[i] == j[i]:
+                        count += 1
+                    else:
+                        case = False
+                        break
+                if count+1 == length:
+                    prefix += to[i]
+                if case == False:
+                     break
+            return prefix
