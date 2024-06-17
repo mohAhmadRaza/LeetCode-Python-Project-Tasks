@@ -1,0 +1,10 @@
+class Solution:
+    def reverseWords(self, s: str) -> str:
+        listing = s.split()
+        listing.reverse()
+        string =""
+        for i in listing:
+            string += i+" "
+        
+        return string[0:len(string)-1]
+        
