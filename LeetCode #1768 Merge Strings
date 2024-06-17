@@ -1,0 +1,13 @@
+class Solution:
+    def mergeAlternately(self, word1: str, word2: str) -> str:
+        
+        string = ""
+        for i in range(len(word1)):
+            string += word1[i]
+            if i <= (len(word2)-1):
+                string += word2[i]
+        
+        if len(word2) > i+1:
+            string += word2[i+1:]
+
+        return string
