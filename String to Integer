@@ -1,0 +1,30 @@
+class Solution:
+    def myAtoi(self, s: str) -> int:
+        s = s.strip()
+        print(s)
+        result = 0
+        sign = 1
+        startIndex = 1
+        if s:
+            if s[0] == '-':
+                sign = -1
+            elif s[0] == '+':
+                sign = 1
+            else:
+                startIndex = 0
+            print("sign",sign)
+            for i in range(startIndex, len(s)):
+                if not s[i].isdigit():
+                    break
+                else:
+                    result = result*10 + int(s[i])
+            result = result*sign
+
+        if result:
+            if result < -2147483648:
+                result  = -2147483648
+            elif result >= 2147483648:
+                result = 2147483647
+        else:
+            result = 0
+        return result
