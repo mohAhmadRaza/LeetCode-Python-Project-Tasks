@@ -1,0 +1,28 @@
+class Solution:
+    def letterCombinations(self, digits: str) -> List[str]:
+        phone = {"2":"abc",  
+                 "3":"def",
+                 "4":"ghi",
+                 "5":"jkl", 
+                 "6":"mno",
+                 "7":"pqrs",
+                 "8":"tuv",
+                 "9":"wxyz"}
+        i = 0
+        listing = []
+        while i < len(digits):
+            listing.append(phone[digits[i]])
+            i += 1
+            
+        if len(digits) == 1:
+            return [''.join(pair) for pair in itertools.product(listing[0])]
+        elif len(digits) == 2:
+            return [''.join(pair) for pair in itertools.product(listing[0], listing[1])]
+        elif len(digits) == 3:
+            return [''.join(pair) for pair in itertools.product(listing[0], listing[1], listing[2])]
+        elif len(digits) == 4:
+            return [''.join(pair) for pair in itertools.product(listing[0], listing[1], listing[2], listing[3])]
+        else:
+            return listing
+        
+
