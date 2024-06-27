@@ -1,0 +1,48 @@
+class Solution:
+    def addBinary(self, a: str, b: str) -> str:
+        ans = 0
+        string = ""
+        if len(a) > len(b):
+            big = a
+            small = b
+        else:
+            big = b
+            small = a
+
+        small = '0'*(len(big)-len(small))+small
+        j = -1
+        small = list(small)
+        big = list(big)
+
+        for i in range(len(big)):
+            ans = int(big[j])+int(small[j])
+    
+            print(j+len(big))
+            if ans == 2:
+                if j+len(big) != 0:
+                   ans = 0
+                   big[j-1] = str(int(big[j-1])+1)
+                   string += str(ans)
+                else:
+                    string += '01'
+        
+            elif ans == 3:
+                if j+len(big) != 0:
+                   ans = 1
+                   big[j-1] = str(int(big[j-1])+1)
+                   string += str(ans)
+                else:
+                    string += str(11)
+        
+            elif ans == 0:
+                string += '0'
+            elif ans == 1:
+                string += '1'
+            j -= 1
+
+        reversed_string = string[::-1]
+        return (reversed_string)
+
+
+
+
