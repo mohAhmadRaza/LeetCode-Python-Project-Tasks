@@ -1,0 +1,17 @@
+class Solution:
+    def reorderSpaces(self, text: str) -> str:
+        List = text.split()
+        total_spaces = text.count(" ")
+        total_words = len(List)
+        remianing_spaces = 0
+        spaces_between = 0
+        if total_words > 1:
+            spaces_between = total_spaces // (total_words - 1)
+            remianing_spaces = total_spaces % (total_words - 1)
+        else:
+            spaces_between = 0
+            remianing_spaces = total_spaces
+        
+
+        result = (" " * spaces_between).join(List) + " " * remianing_spaces
+        return result
