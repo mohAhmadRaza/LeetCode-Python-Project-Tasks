@@ -1,0 +1,16 @@
+from typing import List
+
+class Solution:
+    def findPeakElement(self, nums: List[int]) -> int:
+        left, right = 0, len(nums) - 1
+
+        while left < right:  # use '<' instead of '<=' to avoid unnecessary comparisons
+            mid = (left + right) // 2
+
+            # Adjust comparisons to handle edge cases
+            if nums[mid] > nums[mid + 1]:
+                right = mid
+            else:
+                left = mid + 1
+
+        return left  # or return right, both will be the same when left == right
