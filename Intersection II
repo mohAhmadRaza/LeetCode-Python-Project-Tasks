@@ -1,0 +1,20 @@
+class Solution:
+    def intersect(self, nums1: List[int], nums2: List[int]) -> List[int]:
+        List = []
+        for i in nums1:
+            if i in nums2:
+                if List.count(i) < min(nums1.count(i),nums2.count(i)):
+                    List.append(i)
+        return List
+
+Method 2:
+count1 = Counter(nums1)
+        count2 = Counter(nums2)
+
+        result = []
+
+        for num in count1:
+            if num in count2:
+                result.extend([num]*min(count1[num], count2[num]))
+
+        return result
