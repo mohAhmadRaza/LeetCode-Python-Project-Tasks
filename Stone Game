@@ -1,0 +1,31 @@
+class Solution:
+    def stoneGame(self, piles: List[int]) -> bool:
+        left, right = 0, len(piles)-1
+        alice = 0
+        i= 0
+        bob = 0
+
+        while left <= right:
+            if i % 2 == 0:
+                if piles[left] < piles[right] and piles[left + 1] > piles[right]:
+                    alice += piles[right]
+                    right -= 1
+                elif piles[left] > piles[right] and piles[left + 1] > piles[left]:
+                    alice += piles[right]
+                    right -= 1
+                else:
+                    alice += piles[left]
+                    left += 1
+            if i % 2 != 0:
+                if piles[left] < piles[right] and piles[left + 1] > piles[right]:
+                    bob += piles[right]
+                    right -= 1
+                elif piles[left] > piles[right] and piles[left + 1] > piles[left]:
+                    bob += piles[right]
+                    right -= 1
+                else:
+                    bob += piles[left]
+                    left += 1
+                
+        return alice > bob
+
