@@ -1,0 +1,8 @@
+class Solution:
+    def isPalindrome(self, s: str) -> bool:
+        import re
+        List = s.split()
+        string = ''.join(List)
+        lowerCase = string.lower()
+        cleanedString = re.sub(r'[^a-zA-Z0-9\s]', "", lowerCase)
+        return cleanedString[0:] == cleanedString[::-1]
