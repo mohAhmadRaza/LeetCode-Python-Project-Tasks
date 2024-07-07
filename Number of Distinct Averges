@@ -1,0 +1,48 @@
+Method 1:
+
+class Solution:
+    def distinctAverages(self, nums: List[int]) -> int:
+        s = set()
+        while nums:
+            s.add(( max(nums) + min(nums) ) / 2)
+            nums.remove(max(nums)),nums.remove(min(nums)) 
+        return len(s)
+
+Method 2:
+
+class Solution:
+    def distinctAverages(self, nums: List[int]) -> int:
+        s = set()
+        nums.sort()
+        while nums:
+            s.add((nums.pop(0)+nums.pop() ) / 2)
+        return len(s)
+
+Method 3:
+
+class Solution:
+    def distinctAverages(self, nums: List[int]) -> int:
+        s = set()
+        nums.sort()
+        left, right = 0, len(nums)-1
+        while left < right:
+            s.add((nums[left] + nums[right] ) / 2 )
+            left += 1
+            right -= 1
+        return len(s)
+
+Method 4:
+
+class Solution:
+    def distinctAverages(self, nums: List[int]) -> int:
+        averages = {}  # This dictionary will store the distinct averages
+        nums.sort()
+        left, right = 0, len(nums) - 1
+        
+        while left < right:
+            average = (nums[left] + nums[right]) / 2
+            averages[average] = True  # Mark this average as encountered
+            left += 1
+            right -= 1
+        
+        return len(averages) 
