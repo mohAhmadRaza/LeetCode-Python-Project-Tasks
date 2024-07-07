@@ -1,0 +1,12 @@
+class Solution:
+    def numberOfSpecialChars(self, word: str) -> int:
+        hashMap = Counter(word)
+        result = 0
+
+        for i in hashMap:
+            if i.islower():
+                # Check if the uppercase counterpart is also in the hashmap
+                if i.upper() in hashMap:
+                    result += 1
+        return result
+                    
