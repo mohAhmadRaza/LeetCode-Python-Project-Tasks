@@ -1,0 +1,12 @@
+class Solution:
+    def minLength(self, s: str) -> int:
+        st = ""
+        i = 0
+        while i < len(s):
+            if s[i:i+2] == "AB" or s[i:i+2] == "CD":
+                s = s[0:i]+s[i+2:]
+                i = 0
+            else:
+                i += 1
+        return len(s)
+
