@@ -1,0 +1,22 @@
+class Solution:
+    def findRestaurant(self, list1: List[str], list2: List[str]) -> List[str]:
+        res = []
+        s = 0
+        count = 0
+        index = []
+        for i in range(len(list1)):
+            if list1[i] in list2:
+                count += 1
+                ind = list2.index(list1[i])
+                if count == 1:
+                    s = ind + i
+                    res.append(list1[i])
+                    index.append(ind+i)
+                elif ind + i < s:
+                   s = ind + i
+                   res.pop()
+                   res.append(list1[i])
+                elif index.count(ind+i) == len(index):
+                    res.append(list1[i])
+                   
+        return res
