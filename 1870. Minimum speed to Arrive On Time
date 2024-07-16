@@ -1,0 +1,23 @@
+class Solution:
+    def minSpeedOnTime(self, dist: List[int], hour: float) -> int:
+        import math
+        left, right = 1, 10**7
+
+        while left <= right:
+            mid = (left + right) // 2
+            sums = 0
+            for num in range(len(dist)-1):
+                sums += math.ceil(dist[num] / mid)
+            sums += dist[-1] / mid 
+            
+            if sums <= hour:
+                right = mid +- 1
+            else:
+                left = mid + 1
+        
+        if left > 10**7:  # If left exceeds 10^7, it means no valid speed was found
+             return -1
+        else:
+            return left
+
+
