@@ -1,0 +1,24 @@
+class Solution:
+    def bulbSwitch(self, n: int) -> int:
+        return int(sqrt(n))
+
+                
+Method 2:
+class Solution:
+    def bulbSwitch(self, n: int) -> int:
+        L = ["on"]*n
+
+        for i in range(1, n+1):
+            j = i
+            while j < n:
+                L[j] = "off" if L[j] == "on" else "on"
+                j += i + 1
+
+        return L.count("on")
+
+
+
+            
+                
+
+
