@@ -1,0 +1,19 @@
+class Solution:
+    def sortArrayByParityII(self, nums: List[int]) -> List[int]:
+        n = len(nums)
+
+        i, j = 0, 1
+        
+        sortedArray = [0]*n
+
+        for ele in nums:
+            if ele%2 == 0:
+                sortedArray[i] = ele
+                i += 2
+            else:
+                sortedArray[j] = ele
+                j += 2
+        
+        return sortedArray
+
+
